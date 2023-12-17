@@ -1,10 +1,18 @@
 {% extends 'navbar.html' %}
 
 {% block content %}
+
+<body>
+
   <h2>Artisan Signup</h2>
+
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ user_form.as_p }}
+    {{ artisan_form.as_p }}
     <button type="submit">Sign Up</button>
   </form>
+
+</body>
+
 {% endblock %}

@@ -1,11 +1,29 @@
 {% extends 'navbar.html' %}
 
 {% block content %}
-  <h2>Artisan Login</h2>
-  <form method="post">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Artisan Login</title>
+</head>
+<body>
+
+<h2>Artisan Login</h2>
+
+{% if error %}
+    <p style="color: red;">{{ error }}</p>
+{% endif %}
+
+<form method="post" action="{% url 'artisan_login' %}">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-  </form>
-  <p>Don't have an account? <a href="{% url 'artisan_signup' %}">Sign up</a></p>
+    {{ form.username.label_tag }} {{ form.username }}
+    {{ form.password.label_tag }} {{ form.password }}
+    <input type="submit" value="Login">
+</form>
+
+</body>
+</html>
+
+
 {% endblock %}
